@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Vue/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- Vue中的响应式机制 -->
+    <!-- 注意{{}}仅支持表达式 -->
+    <div id="app">
+        {{message}}
+    </div>
+    <!-- v-bind: 指令或者: 指令响应式设计 -->
+    <!-- v-bind: 指令 -->
+    <div id="app1">
+        <div v-bind:id="message">{{message}}</div>
+    </div>
+    <!-- : 指令 -->
+    <div id="app2">
+        <span :id="message">{{message}}</span>
+    </div>
+    <!-- :title 指令 -->
+    <div id="app3">
+        <span :title="message">
+            鼠标悬停显示动态绑定的文字{{message}}
+        </span>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "hello world"
+            }
+        })
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                message: "hello world"
+            }
+        })
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                message: "hello world"
+            }
+        })
+        var app3 = new Vue({
+            el: "#app3",
+            data: {
+                message: "hello world"
+            }
+        })
+    </script>
+</body>
+
+</html>
