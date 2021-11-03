@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Vue/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="app">
+        {{message}}
+    </div>
+    
+    <div id="app2">
+        {{message2}}
+        <span v-bind:id="message2"></span>
+    </div>
+    
+    <div id="app3">
+        <p :id="message3"></p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "hello world"
+            }
+        })
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                message2: "hello world"
+            }
+        })
+        var app3 = new Vue({
+            el: "#app3",
+            data: {
+                message3: "hello world"
+            }
+        })
+    </script>
+    
+    <div id="app4">
+        <ul>
+            <li>
+                <span v-if="!item.del">{{item.title}}</span>
+                <span v-else style="text-decoration: line-through;">{{item.title}}</span>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app4 = new Vue({
+            el: "#app4",
+            data: {
+                item: {
+                    title: "课程1",
+                    del: false
+                }
+            }
+        })
+    </script>
+
+    <script>
+        var obj = {
+            name: "J",
+            age: 24,
+        }
+        console.log(obj.name);
+        console.log(obj.age);
+    </script>
+
+    <div id="obj1">
+        {{name}}
+        <br>
+        {{age}}
+    </div>
+    <script>
+        var obj1 = new Vue({
+            el:"#obj1",
+            data:{
+                name:"j",
+                age:23
+            }
+        })
+    </script> -->
+    <!-- <div id="app">
+        name <span>{{message.name}}</span>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: {
+                    name: "J",
+                    age: 24
+                }
+            }
+        })
+    </script> -->
+    <!-- <div id="app">
+        <ul v-for="song in list">
+            {{list.song}}
+        </ul>
+        <ol v-for="singer in list">
+            {{list.singer}}
+        </ol>
+        <dd v-for="music in list">
+            {{list.music}}
+        </dd>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:{
+                    song:"Love",
+                    music:"pop",
+                    singer:"Jay"
+                }
+            }
+        })
+    </script> -->
+    <div id="app">
+        <ul v-for="songname in list">
+            {{songname.song}}
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    {song:"Love"},
+                    {song:"List"},
+                    {song:"last"}
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
