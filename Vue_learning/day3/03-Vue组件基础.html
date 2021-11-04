@@ -62,7 +62,7 @@
             }
         })
     </script> -->
-    <div id="app">
+    <!-- <div id="app">
         <ol>
             <li v-for="text in list">
                 {{text.text}}
@@ -97,6 +97,42 @@
                     { text: "JS" },
                     { text: "CSS" },
                     { text: "HTML" }
+                ]
+            }
+        })
+    </script> -->
+    <div id="blog-post-demo">
+        <blog-post text1="My journey with Vue" text2="Blogging with Vue" text3="Why Vue is so fun"></blog-post>
+        <blog-post v-text="post[0].id">{{post}}</blog-post>
+        <h2>{{post}}</h2>
+    </div>
+    <script>
+        Vue.component("blog-post", {
+            props: {
+                text1: [],
+                text2: [],
+                text3:[]
+            },
+            data: function () {
+                return {
+
+                }
+            },
+            template: `
+                <div class="blog-post">
+                    <h2>{{text1}}😋</h2>
+                    <h3>{{text2}}👍</h3>
+                    <h4>{{text3}}⌚</h4>  
+                </div>
+            `
+        })
+        new Vue({
+            el: "#blog-post-demo",
+            data: {
+                post: [
+                    { id: "1", title: "My journey with Vue" },
+                    { id: "2", title: "Blogging with Vue" },
+                    { id: "3", title: "Why Vue is so fun" }
                 ]
             }
         })
