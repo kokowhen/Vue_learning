@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Vue/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="app">
+        如果这段代码的实现在页面的很多地方都会被复用，那我们可以自定义Vue组件来提高开发效率
+        <h1 v-text="m1"></h1>
+        <h2 v-text="m2"></h2>
+        <m12></m12>
+    </div>
+    <script>
+        // 组件的定义和注册
+        Vue.component("m12", {
+            // props: {
+            //     m1: String,
+            //     m2: String
+            // },
+            template: `
+                <h1 v-text="arr[0].m1"></h1>
+                <h2 v-text="arr[1].m2"></h2>
+            `,
+            data: function () {
+                return {
+                    arr:[{m1:"hello"},{m2:"world"}]
+                }
+            }
+        })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                m1: "hello",
+                m2: "world"
+            }
+        })
+    </script> -->
+    <!-- <div id="app">
+        <button-counter></button-counter>
+    </div>
+    <script>
+        Vue.component("button-counter",{
+            data:function(){
+                return {
+                    counter:0
+                }
+            },
+            template:`
+                <button v-on:click="counter++">{{counter}}</button>
+            `
+        })
+        new Vue({
+            el:"#app",
+            data:{
+                counter:0
+            }
+        })
+    </script> -->
+    <div id="app">
+        <ol>
+            <li v-for="text in list">
+                {{text.text}}
+            </li>
+        </ol>
+        <list-text></list-text>
+        <list-text></list-text>
+    </div>
+    <script>
+        Vue.component("list-text", {
+            data: function () {
+                return {
+                    list: [
+                        { text: "JS" },
+                        { text: "CSS" },
+                        { text: "HTML" }
+                    ]
+                }
+            },
+            template: `
+                <ol>
+                    <li v-for="text in list">
+                        {{text.text}}
+                    </li>
+                </ol>
+            `
+        })
+        new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    { text: "JS" },
+                    { text: "CSS" },
+                    { text: "HTML" }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
