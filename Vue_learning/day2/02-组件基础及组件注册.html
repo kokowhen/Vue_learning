@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <!-- <div id="app">
         {{list}}
         <hr>
         {{list[0]}}
@@ -21,7 +21,8 @@
         <hr>
         <ul>
             <li>
-                <span v-if="list[0].del"></span>
+                <span v-if="!list[0].del">{{list[0].title}}</span>
+                <span v-else style="text-decoration: line-through;">{{list[0].title}}</span>
             </li>
         </ul>
     </div>
@@ -36,6 +37,70 @@
                         del: false
                     }
                 ]
+            }
+        })
+    </script> -->
+    <!-- <div id="app">
+        <ul>
+            <li v-for="t in list">
+                {{t.text}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    {text:"JS"},
+                    {text:"CSS"},
+                    {text:"HTML"}
+                ]
+            }
+        })
+    </script> -->
+    <div id="app">
+        <ul>
+            <li v-for="message">
+                <span>{{message.name}}</span>
+                <span>{{message.gender}}</span>
+            </li>
+        </ul>
+        <zj></zj>
+        <zj></zj>
+        <zj></zj>
+    </div>
+
+    <script>
+        Vue.component("zj", {
+            props: {
+                name:String,
+                gender:String,
+            },
+            template: `
+            <ul>
+                <li v-for="message">
+                    <span>{{message.name}}</span>
+                    <span>{{message.gender}}</span>
+                </li>
+            </ul>
+            `,
+            data: function () {
+                return {
+                    message: {
+                        name: "J",
+                        gender: "K"
+                    }
+                }
+            }
+        })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: {
+                    name: "J",
+                    gender: "K"
+                }
             }
         })
     </script>

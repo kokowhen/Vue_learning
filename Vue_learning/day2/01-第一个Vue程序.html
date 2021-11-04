@@ -124,7 +124,7 @@
             }
         })
     </script> -->
-    <div id="app">
+    <!-- <div id="app">
         <ul v-for="songname in list">
             {{songname.song}}
         </ul>
@@ -139,6 +139,37 @@
                     {song:"last"}
                 ]
             }
+        })
+    </script> -->
+    <div id="app">
+        <!-- v-bind属性绑定：本质就是把Vue里data对象的数据绑定给HTML的属性，作为其动态的属性值 -->
+        <span v-bind:id="message.name"></span>
+        <span :id="message.gender"></span>
+        <!-- v-text把绑定的数据显示出来 -->
+        <span v-text="message"></span>
+        <hr>
+        <span v-text="message.name"></span>
+        <hr>
+        <span v-text="message.gender"></span>
+        <hr>
+        <!-- v-on事件的绑定 -->
+        <button v-on:click="change">Click me</button> {{message.test}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: {
+                    name: "J",
+                    gender: "male",
+                    test: "hello"
+                }
+            },
+            methods: {
+                change: function () {
+                    this.message.test += " world"
+                }
+            },
         })
     </script>
 </body>
