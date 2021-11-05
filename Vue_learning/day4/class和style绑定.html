@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Vue/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- 绑定class -->
+    <!-- <div id="app">
+        <div v-bind:class="{vl1:value1,vl2:value2,'vl3':value3}"></div>
+        <div :class="{ba:value1}"></div>
+        <div :class="{ba:value2}"></div>
+        <div :class="[arr1,arr2]"></div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                value1: true,
+                value2: false,
+                value3:true,
+                arr1:"a1",
+                arr2:"a2"
+            }
+        })
+    </script> -->
+    <div id="app">
+        <div :style="activeStyle">h</div>
+        <p :style="[activeStyle,activeStyle1]">h</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                activeStyle: {
+                    color: "red",
+                    fontSize: "40px"
+                },
+                activeStyle1:{
+                    color: "blue",
+                    fontSize: "60px"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

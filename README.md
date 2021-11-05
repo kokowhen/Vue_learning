@@ -42,3 +42,19 @@ prop:{
 - 如果Vue实例data对象里的属性值为HTML的原生代码，使用{{}}的形式是不能在页面上渲染出效果的，只会显示原生的HTML代码，v-html指令就会解决这个问题，渲染出HTML的效果而不是显示原生HTML代码
 - 动态参数不太理解
 
+## 04-计算属性
+
+- computed计算属性
+  - computed是vm实例对象的属性，里面是一个函数，函数返回HTML里复杂逻辑的动态解析数据，this参数开头，直接可以通过this(指向vm)控制data属性(相对于vm而言)里的属性和对象
+  - 当动态解析的数据逻辑很复杂时，比如data对象里内嵌的数据嵌套了对象和属性等复杂逻辑数据，那么在HTML中动态解析这些数据就会变得很复杂，这个时候我们就需要计算属性computed了
+  - Vue实例里新加的computed属性，里面是一个函数(getter)，函数返回值就是待解析的复杂逻辑值，函数名就是HTML代码里解析的文本
+  - computed计算属性里的函数变成了一个DOM节点，可以通过Vue实例对象进行访问
+  - computed好像并没有提供像el和data通过$el和$data在HTML进行绑定的方法
+  - computed不是一个DOM节点，通过vm实例对象是访问不到的，反而是computed里面的函数作为了vm实例的属性，进而可以作为DOM节点进行访问
+  - get函数和set函数不懂
+
+## 05-绑定class和style
+
+- v-bind绑定class的时候，class后不仅仅可以跟data对象(相对于data而言)里的属性，还可以是一个键值对的对象或者数组，而且v-bind绑定和HTML原生的class是可以共存的
+- class对象里的自定义属性对应的data动态解析数据是不是都是做一个true和false的逻辑判断，判断为真就将其属性渲染为class的属性值，判断为假，class后面就什么都没有
+- 那这样是不是这种class绑定只用在data对象里设置两个属性，属性值分别为true和false
