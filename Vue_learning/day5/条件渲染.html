@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Vue/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="app">
+        <div v-bind:style="activeStyle">H</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                activeStyle:{
+                    color:"red",
+                    fontSize:"40px"
+                }
+            }
+        })
+    </script> -->
+    <!-- 利用计算属性 -->
+    <!-- <div id="app">
+        <div :class="{active1:isActive,active2:error}"></div>
+        <div :class="classObject"></div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isActive: true,
+                error: false
+            },
+            computed: {
+                classObject: function () {
+                    return {
+                        active1: this.isActive && !this.error,
+                        active2: this.error && !this.isActive
+                    }
+                }
+            }
+        })
+    </script> -->
+    <div id="app">
+        <ul>
+            <li v-for="(name,value,index) in list">
+                {{index}} - {{value}} - {{name}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                list:{
+                    songName:"Love",
+                    author:"Jay",
+                    published:"2021"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

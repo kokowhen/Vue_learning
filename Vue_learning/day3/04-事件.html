@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,10 @@
     <title>Document</title>
     <script src="./Vue/vue.min.js"></script>
 </head>
+
 <body>
-    <div id="app">
+    <!-- 监听事件 -->
+    <!-- <div id="app">
         <button v-on:click="count++">{{count}}</button>
         +
         <button @click="count1--">{{count1}}</button>
@@ -23,6 +26,41 @@
                 count1:100
             }
         })
+    </script> -->
+    <!-- 事件处理方法 -->
+    <!-- <div id="app">
+        <button v-on:click="seen">click me</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                information: "hello"
+            },
+            methods: {
+                seen: function (event) {
+                    alert(this.information)
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                }
+            }
+        })
+    </script> -->
+    <div id="app">
+        <button v-on:click="say('hi')">say hi</button>
+        <button v-on:click="say('hello')">say hello</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            methods: {
+                say:function(message){
+                    alert(message)
+                }
+            }
+        })
     </script>
 </body>
+
 </html>
