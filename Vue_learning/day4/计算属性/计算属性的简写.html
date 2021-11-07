@@ -27,15 +27,8 @@
                 lastName:"三"
             },
             computed:{
-                fullName:{
-                    get:function(){
-                        return this.firstName + this.lastName
-                    },
-                    set:function(value){
-                        const arr = value.slice()
-                        this.firstName = arr[0]
-                        this.lastName = arr[1]
-                    }
+                fullName(){
+                    return this.firstName+this.lastName
                 }
             }
         })

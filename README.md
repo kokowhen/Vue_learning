@@ -112,7 +112,7 @@ prop:{
 
 > 怎样监听事件
 >
-> 指令后面跟着methods里的函数，事件触发为真时执行
+> 指令后面跟着methods里的函数，事件触发时执行
 >
 > 三个重要的事件修饰符，阻止触发默认事件、阻止冒泡、设置事件只被触发一次
 
@@ -146,3 +146,38 @@ prop:{
 - 三个重要常用的修饰符
 - 触发键盘事件的修饰符
 
+## 09-监视属性
+
+> 当被监测的属性发生变化时，回调函数handler自动调用
+>
+> 监视属性必须存在才能进行调用
+>
+> 监视的两种写法
+
+- 作用：监视某一个属性的变化
+- 天气案例中天气的情况是变化着的，我们可以使用watch属性去监视
+- 配置那个变化的对象：handler函数、newValue、oldValue参数
+- immediate：true可以让data里的属性未改变之前handler函数就被执行
+- 深度监视：deep：true开启
+- 监视属性的简写
+
+```html
+watch:{
+	isHot:{
+		handler(newValue,oldValue){
+			console.log(newValue,oldValue)
+		}
+	}
+}
+```
+
+```html
+vm.$watch('isHot',{
+		handler(newValue,oldValue){
+			console.log(newValue,oldValue)
+		}
+	}
+}
+```
+
+- note：Vue管理的函数：methods里函数、computed里的getter和setter、watch属性里的handler函数都不要写成箭头函数的形式，不然this参数指向的对象会变为window

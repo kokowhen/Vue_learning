@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.min.js"></script>
+</head>
+<body>
+    <div id='app'>
+        今天的天气真<span>{{info}}</span>
+        <br>
+        <br>
+        <button @click="changeWeather">
+            <h3>切换天气</h3>
+        </button>
+        <h3>a:{{numbers.a}}</h3>
+        <h3>b:{{numbers.b}}</h3>
+        <button @click="(numbers.a)++">
+            <h4>click me to add 1 to a</h4>
+        </button>
+        <br>
+        <br>
+        <button @click="(numbers.b)--">
+            <h4>click me to substract 1 to b</h4>
+        </button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isHot: true,
+                numbers: {
+                    a: 1,
+                    b: 200
+                }
+            },
+            methods: {
+                changeWeather() {
+                    this.isHot = !this.isHot
+                }
+            },
+            computed: {
+                info() {
+                    return this.isHot ? '炎热' : '凉爽'
+                }
+            },
+            // 监视多级结构中的某个属性的变化
+            // 监视多级结构中的所有属性的变化
+            watch: {
+                info(newValue,oldValue){
+                    console.log(newValue,oldValue)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
