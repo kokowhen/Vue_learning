@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.min.js"></script>
+    <style>
+        .a {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        .b {
+            width: 200px;
+            height: 200px;
+            background-color: rosybrown;
+        }
+
+        .c {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <div class="b">
+            <div class="c">
+
+            </div>
+        </div>
+    </div>
+    <div id='app'>
+        <!-- 阻止默认事件修饰符 -->
+        <a href="https://www.baidu.com" @click.prevent="showInfo">baidu</a>
+        <!-- 阻止事件冒泡 -->
+        <div @click="showInfo1">
+            <button @click="showInfo2">click me</button>
+        </div>
+        <!-- 事件只触发一次 -->
+        <button @click.once="showInfo3">click me</button>
+        <!-- 修饰符可以联系写 -->
+        <div @click="showInfo1">
+            <a href="https://www.baidu.com" @click.prevent.stop="showInfo">baidu</a>
+        </div>
+    </div>
+    <script>
+        var a = document.getElementsByClassName("a")[0];
+        var b = document.getElementsByClassName("b")[0];
+        var c = document.getElementsByClassName("c")[0];
+        a.onclick = function () {
+            alert("a box")
+        }
+        b.onclick = function () {
+            alert("b box")
+        }
+        c.onclick = function () {
+            alert("c box")
+        }
+    </script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                showInfo(e) {
+                    alert("you can't open baidu")
+                },
+                showInfo1() {
+                    alert("div的事件被触发")
+                },
+                showInfo2() {
+                    alert("按钮的事件被触发")
+                },
+                showInfo3() {
+                    alert("事件只被触发一次")
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

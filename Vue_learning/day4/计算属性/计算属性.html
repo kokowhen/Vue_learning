@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- 插值法实现姓名案例 -->
+    <!-- <div id='app'>
+        姓：<input type="text" name="" id="" v-model="firstName">
+        <br>
+        <br>
+        名：<input type="text" name="" id="" v-model="lastName">
+        <br>
+        <br>
+        姓名：<span>{{firstName.slice(0,3)}}{{lastName}}</span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstName:"张",
+                lastName:"三"
+            }
+        })
+    </script> -->
+    <!-- 使用方法methods -->
+    <!-- <div id='app'>
+        姓：<input type="text" name="" id="" v-model="firstName">
+        <br>
+        <br>
+        名：<input type="text" name="" id="" v-model="lastName">
+        <br>
+        <br>
+        姓名：<span>{{fullName()}}</span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: "张",
+                lastName: "三"
+            },
+            methods: {
+                fullName() {
+                    return this.firstName + this.lastName
+                }
+            },
+        })
+    </script> -->
+    <div id='app'>
+        姓：<input type="text" name="" id="" v-model="firstName">
+        <br>
+        <br>
+        名：<input type="text" name="" id="" v-model="lastName">
+        <br>
+        <br>
+        姓名：<span>{{fullName}}</span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstName:"张",
+                lastName:"三"
+            },
+            computed:{
+                fullName:{
+                    get:function(){
+                        return this.firstName + this.lastName
+                    },
+                    set:function(value){
+                        var arr = value.slice()
+                        this.firstName = arr[0]
+                        this.lastName = arr[1]
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
