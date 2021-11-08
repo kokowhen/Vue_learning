@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <ul>
+            <li v-for=" p in persons" :key="p.id">{{p.name}}-{{p.age}}</li>
+            <hr>
+            <li v-for="ps in persons" :key="ps.id">{{ps.name}}~{{ps.id}}</li>
+            <hr>
+            <li v-for="(per,index) in persons" :key="per.id">
+                {{per.age}}~{{per.name}}~{{index}}
+            </li>
+            <hr>
+            <li v-for="(info,index) in carInfo">
+                {{info}}--{{index}}
+            </li>
+            <hr>
+            <li v-for="(w,o) in str">
+                {{w}}--{{o}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                persons:[
+                    {id:"001",name:"张三",age:20},
+                    {id:"002",name:"李四",age:21},
+                    {id:"003",name:"王五",age:22}
+                ],
+                carInfo:{
+                    name:"奥迪Q7",
+                    price:"70w",
+                    color:"black"
+                },
+                str:"hello"
+            }
+        })
+    </script>
+</body>
+
+</html>

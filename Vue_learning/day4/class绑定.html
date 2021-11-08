@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Vue/vue.min.js"></script>
+    <style>
+        .c1 {
+            width: 100px;
+            width: 100px;
+            background-color: red;
+        }
+
+        .c2 {
+            width: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+
+        .c3 {
+            width: 100px;
+            width: 100px;
+            background-color: gold;
+        }
+        .c4{
+            border: 2px solid gray;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <div :class="color"><span @click="changeColor">click me to change color</span></div>
+        <br>
+        <br>
+        <br>
+        <div :class="colorArray"><span>change color</span></div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                color: "c1",
+                colorArray:["c2","c3","c4"]
+            },
+            methods: {
+                changeColor() {
+                    var randomColor = ["c1","c2","c3"]
+                    var index = Math.floor(Math.random()*3)
+                    this.color = randomColor[index]
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
