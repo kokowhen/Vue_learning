@@ -76,8 +76,6 @@ prop:{
 > 绑定style样式：注意styleObject里的key不能随便写
 
 - v-bind绑定class的时候，class后不仅仅可以跟data对象(相对于data而言)里的属性，还可以是一个键值对的对象或者数组，而且v-bind绑定和HTML原生的class是可以共存的
-- class对象里的自定义属性对应的data动态解析数据是不是都是做一个true和false的逻辑判断，判断为真就将其属性渲染为class的属性值，判断为假，class后面就什么都没有
-- 那这样是不是这种class绑定只用在data对象里设置两个属性，属性值分别为true和false，应该是的，这样可以动态的切换HTML里class对应的值
 
 ## 06-列表渲染列表
 
@@ -188,4 +186,6 @@ vm.$watch('isHot',{
 
 - note：Vue管理的函数：methods里函数、computed里的getter和setter、watch属性里的handler函数都不要写成箭头函数的形式，不然this参数指向的对象会变为window
 
-- watch和computed的区别：计算属性是不能开启异步任务去维护和操作数据的，例如，我想要计算属性函数的返回值等1秒再返回，这是做不到的；而watch是可以的，因为watch不是靠返回值的
+- watch和computed的区别：
+  - computed能实现的功能watch基本也都能实现；watch能实现的功能computed不一定能实现
+  - 计算属性是不能开启异步任务去维护和操作数据的，例如，我想要计算属性函数的返回值等1秒再返回，这是做不到的；而watch是可以的，因为watch不是靠返回值的
