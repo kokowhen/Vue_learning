@@ -25,7 +25,12 @@
             <li v-for="(w,o) in str">
                 {{w}}--{{o}}
             </li>
+            <hr>
+            <li v-for="pe in persons">
+                {{pe.name}}--{{pe.age}} <input type="text" :key="pe.id">
+            </li>
         </ul>
+        <button @click.once="addPerson">addPerson</button>
     </div>
     <script>
         var vm = new Vue({
@@ -42,6 +47,12 @@
                     color:"black"
                 },
                 str:"hello"
+            },
+            methods: {
+                addPerson(){
+                    const p = {id:"004",name:"赵六",age:"44"}
+                    this.persons.unshift(p)
+                }
             }
         })
     </script>

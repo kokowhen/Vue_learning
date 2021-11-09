@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <h2>work by watch</h2>
+        <ul>
+            <li v-for="star in filStar" :key="star.id">
+                {{star.name}}
+            </li>
+        </ul>
+        <input type="text" placeholder="please input name" v-model="keyWord1">
+        <br>
+        <h2>work by computed</h2>
+        <ul>
+            <li v-for="star1 in filterFun" :key="star1.id">
+                {{star1.name}}
+            </li>
+        </ul>
+        <input type="text" placeholder="please input name" v-model="keyWord2">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                Stars: [
+                    { id: "001", name: "周杰伦", age: 24, sex: "男" },
+                    { id: "002", name: "周冬雨", age: 25, sex: "女" },
+                    { id: "003", name: "马冬梅", age: 26, sex: "女" },
+                    { id: "004", name: "温兆伦", age: 27, sex: "男" }
+                ],
+                keyWord1: "",
+                keyWord2: "",
+                filStar: []
+            },
+            watch: {
+                keyWord1: {
+                    immediate: true,
+                    handler(val) {
+                        this.filStar = this.Stars.filter((star) => {
+                            return star.name.indexOf(val) !== -1
+                        })
+                    }
+                }
+            },
+            computed: {
+                filterFun() {
+                    return this.Stars.filter((star) => {
+                        return star.name.indexOf(this.keyWord2) !== -1
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
