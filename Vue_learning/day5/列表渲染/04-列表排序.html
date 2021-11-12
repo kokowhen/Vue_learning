@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="text" placeholder="请输入姓名" v-model="keyWords1">
+        <button @click="sortType1 = 12">年龄升序</button>
+        <button @click="sortType1 = 11">年龄降序</button>
+        <button @click="sortType1 = 10">原顺序</button>
+        <ul>
+            <li v-for="person in filterPersons" :key="person.id">
+                {{person.name}}--{{person.age}}--{{person.sex}}
+            </li>
+        </ul>
+        <input type="text" placeholder="请输入姓名" v-model="keyWords2">
+        <button @click="sortType2 = 2">年龄升序</button>
+        <button @click="sortType2 = 1">年龄降序</button>
+        <button @click="sortType2 = 0">原顺序</button>
+        <ul>
+            <li v-for="person in personFilter" :key="person.id">
+                {{person.name}}--{{person.age}}--{{person.sex}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                persons: [
+                    { id: "001", name: "马冬梅", age: 19, sex: "女" },
+                    { id: "002", name: "周冬雨", age: 40, sex: "女" },
+                    { id: "003", name: "周杰伦", age: 33, sex: "男" },
+                    { id: "004", name: "温兆伦", age: 54, sex: "男" },
+                    { id: "005", name: "林俊杰", age: 31, sex: "男" },
+                ],
+                keyWords1: "",  // 存放监视属性方法输入框输入的数据
+                keyWords2: "",   // 存放计算属性方法输入框输入的数据
+                filterPersons: [],   // 存放监视属性方法计算出来的新数组
+                sortType1: 10,     // 0原顺序 1降序 2 升序
+                sortType2: 0
+            },
+            watch: {
+                // keyWords1: {
+                //     immediate:true,     // watch属性里的代码只要监视的数据变化了就会执行，这行代码的作用是让keyWords还没改变的时候watch先执行一遍
+                //     handler(newValue, oldValue) {
+                //         // console.log("keyWords has been changed "+newValue)
+                //         this.filterPersons = this.persons.filter((p) => {                     // filter不影响原数组，但是会返回新过滤好的数组
+                //             return p.name.indexOf(newValue) != -1   // 过滤的匹配条件，不满足条件返回-1
+                //         })
+                //     }
+                // }
+                sortType1: {
+                    immediate: true,
+                    handler(newValue, oldValue) {
+                        // filter
+                        this.filterPersons = this.persons.filter((p) => {
+                            return p.name.indexOf(this.keyWords1) != -1
+                        })
+                        if (newValue != 10) {
+                            this.filterPersons.sort((a, b) => {
+                                return newValue != 1 ? b.age - a.age : a.age - b.age
+                            })
+                        }
+                    }
+                }
+            },
+            // 通过计算属性把persons属性计算过滤
+            computed: {
+                personFilter() {
+                    const arr = this.persons.filter((person) => {
+                        return person.name.indexOf(this.keyWords2) != -1
+                    })
+                    if (this.sortType2 != 0) {
+                        arr.sort((p1, p2) => {     // 现在的sortType只有两种值1 和 2
+                            return this.sortType2 === 1 ? p2.age - p1.age : p1.age - p2.age
+                        })
+                    }
+                    return arr
+                }
+            }
+        })
+        var arr1 = [1, 4, 7, 8, 14, 7]
+        arr1.sort((a, b) => {
+            return b - a
+        })
+        console.log(arr1)
+    </script>
+</body>
+
+</html>

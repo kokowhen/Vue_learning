@@ -54,7 +54,7 @@
             computed: {
                 filterFun() {
                     return this.Stars.filter((star) => {
-                        return star.name.indexOf(this.keyWord2) !== -1
+                        return star.name.indexOf(this.keyWords) !== -1
                     })
                 }
             }

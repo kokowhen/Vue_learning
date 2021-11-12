@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <button @click="count++">点我加1</button>
+        <h2>{{count}}</h2>
+        <h3>{{newCount}}</h3>
+
+        <hr>
+
+        <input type="text" v-model="keyWords">
+        <button @click="sortType = 2">升序</button>
+        <button @click="sortType = 1">降序</button>
+        <button @click="sortType = 0">原序</button>
+        <ul>
+            <li v-for="person in filterPersons" :key="person.id">
+                {{person.name}}--{{person.age}}--{{person.sex}}
+            </li>
+            <li v-for="person in sortPersons" :key="person.id">
+                {{person.name}}--{{person.age}}--{{person.sex}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                persons: [
+                    { id: "001", name: "马冬梅", age: 19, sex: "女" },
+                    { id: "002", name: "周冬雨", age: 40, sex: "女" },
+                    { id: "003", name: "周杰伦", age: 33, sex: "男" },
+                    { id: "004", name: "温兆伦", age: 54, sex: "男" },
+                    { id: "005", name: "林俊杰", age: 31, sex: "男" },
+                ],
+                count: 0,
+                newCount: 100,
+                keyWords: "",
+                sortType: 0,
+                filterPersons: [],
+                sortPersons: []
+            },
+            watch: {
+                count(newValue, oldValue) {
+                    console.log(newValue)
+                    this.newCount += newValue
+                },
+                keyWords: {
+                    immediate: true,
+                    handler(newValue, oldValue) {
+                        this.filterPersons = this.persons.filter((p) => {
+                            return p.name.indexOf(newValue) != -1
+                        })
+                        if (this.sortType != 0) {
+                            this.filterPersons.sort((a, b) => {
+                                return this.sortType !== 1 ? b.age - a.age : a.age - b.age
+                            })
+                        }
+                    }
+                },
+                // sortType: {
+                //     immediate: true,
+                //     handler(newValue, oldValue) {
+                //         if (newValue != 0) {
+                //             this.filterPersons.sort((a, b) => {
+                //                 return newValue != 1 ? b.age - a.age : a.age - b.age
+                //             })
+                //         }
+                //     }
+                // }
+            }
+        })
+    </script>
+</body>
+
+</html>
