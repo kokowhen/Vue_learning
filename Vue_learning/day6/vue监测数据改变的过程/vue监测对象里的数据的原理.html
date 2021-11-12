@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name:"电子科技大学",
+                address:"成都",
+                major:{
+                    ME:{
+                        students:{
+                            population:510
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
