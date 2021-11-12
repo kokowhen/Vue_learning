@@ -1,28 +1,27 @@
-## 箭头函数
-> 从普通函数的定义和调用去对比ES6的箭头函数
-
-传统JS声明和调用函数
-
-```javascript
- // 第一种函数定义的方法
-            function fun1(a){
-                console.log(a)
-            }
-            fun1('hello')
-            // 第二种函数定义的方法(匿名函数)
-            var fun2 = function(){
-                console.log("hello")
-            }
-            fun2()
-            // 第三种函数定义的方法（构造函数法）
-            var fun3 = new Function('console.log("hello")')
-            fun3()
-```
-
-使用箭头函数声明和调用函数
-
-```javascript
- // 使用箭头函数声明和调用函数
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 第一种函数定义的方法
+        function fun1(a){
+            console.log(a)
+        }
+        fun1('hello')
+        // 第二种函数定义的方法(匿名函数)
+        var fun2 = function(){
+            console.log("hello")
+        }
+        fun2()
+        // 第三种函数定义的方法（构造函数法）
+        var fun3 = new Function('console.log("hello")')
+        fun3()
+        // 使用箭头函数声明和调用函数
         var fun4 = (p=>{
             console.log(p)
         })
@@ -31,12 +30,7 @@
         // 函数体内只有return语句
         var fun5 = ((a,b)=> console.log(a+b))
         fun5(20,30)
-```
-
-箭头函数中this的指向
-
-```javascript
-// 我们来看看箭头函数里this的指向
+        // 我们来看看箭头函数里this的指向
         // 传统函数
         var obj1 = {
                 name:"j",
@@ -54,17 +48,13 @@
             sayAge:()=>console.log(this.g_age)  // this指向全局的window对象，不会指向调用它的对象
         }
         obj2.sayAge()
-```
-
-一个简单的例子
-
-```javascript
-// 简单的题目
+        // 简单的题目
         var str = '我是全局window下的字符串'
         var testObj = {
             str:"我是调用方法的对象里的字符串",
             testFun:()=> console.log(this.str)
         }
         testObj.testFun()   // 输出的是'我是全局window下的字符串'
-```
-
+    </script>
+</body>
+</html>
