@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <h2 :style='{opacity}'>欢迎学习Vue</h2>
+        <!-- <button @click="change">change</button> -->
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el: '#app',
+            data: {
+                opacity: 1
+            },
+            methods: {
+                // change() {
+                //     setInterval(() => {
+                //         this.opacity -= 0.01
+                //         if (this.opacity <= 0) this.opacity = 1
+                //     }, 16)
+                // }
+            },
+            // Vue完成模板的解析并把真实的DOM元素放入页面后（挂载完毕）调用mounted函数
+            mounted() {
+                setInterval(() => {
+                    this.opacity -= 0.01
+                    if (this.opacity <= 0) this.opacity = 1
+                }, 16)
+            },
+        })
+        // setInterval(()=>{
+        //     vm.opacity -= 0.01
+        //     if(vm.opacity <= 0) vm.opacity = 1
+        // },16)
+        var obj = { name }
+        console.log(obj)
+    </script>
+</body>
+
+</html>

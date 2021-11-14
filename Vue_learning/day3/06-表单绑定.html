@@ -1,94 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./Vue/vue.min.js"></script>
+    <script src="../day5/Vue/vue.js"></script>
 </head>
+
 <body>
-    <!-- <div id="app">
-        <input type="text" placeholder="please input message" v-model="message">
-        <br>
-        message is : {{message}}
-        <br>
-        <p>{{message}}</p>
-        <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
-        <hr>
-        <input type="checkbox" v-model="value1">{{value1}}
-        <input type="checkbox" v-model="value2">{{value2}}
-        <input type="radio">
-        <p>checkName is:{{checkName}}</p>
+    <div id='app'>
+        <form @submit.prevent="demo">
+            <label for="admin">账号</label>
+            <input type="text" id="admin" v-model.trim="userInfo.account">
+            <br>
+            <br>
+            <label for="pw">密码</label>
+            <input type="password" id="pw" v-model="userInfo.passWord">
+            <br>
+            <br>
+            性别：
+            <label for="male">男</label>
+            <input type="radio" id="male" v-model="userInfo.sex" value="male">
+            <label for="female">女</label>
+            <input type="radio" id="female" v-model="userInfo.sex" value="female">
+            <br>
+            <br>
+            爱好：
+            <label for="smoke">抽烟</label>
+            <input type="checkbox" id="smoke" v-model="userInfo.hobby" value="smoke">
+            <label for="drink">喝酒</label>
+            <input type="checkbox" id="drink" value="drink" v-model="userInfo.hobby">
+            <label for="hair">烫头</label>
+            <input type="checkbox" id="hair" value="hair" v-model="userInfo.hobby">
+            <br>
+            <br>
+            <label for="age">年龄：</label>
+            <input type="number" name="" id="age" v-model.number="userInfo.age">
+            <br>
+            <br>
+            所属校区：
+            <select name="" id="" v-model="userInfo.city">
+                <option value="">请选择校区</option>
+                <option value="beijin">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="guanzhou">广州</option>
+                <option value="chengdu">成都</option>
+            </select>
+            <br>
+            <br>
+            <label for="otherInfo">其他信息</label>
+            <textarea name="" id="otherInfo" cols="30" rows="10" v-model.lazy="userInfo.other"></textarea>
+            <br>
+            <br>
+            <input type="checkbox" name="" id="read" v-model="userInfo.agree">
+            <label for="read">阅读并接受</label>
+            <a href="#">《用户协议》</a>
+            <br>
+            <br>
+            <input type="submit" value="提交">
+        </form>
     </div>
     <script>
+        Vue.config.productionTip = false
         var vm = new Vue({
-            el:"#app",
-            data:{
-                message:"hello",
-                value1:true,
-                value2:false,
-                checkName:[]
-            }
-        })
-    </script> -->
-    <!-- <div id="app">
-        <input type="checkbox" v-model="cN" value="Jack">
-        <label for="">Jack</label>
-        <input type="checkbox" v-model="cN" value="Jeffery">
-        <label for="">Jeffery</label>
-        <p>check Name is {{cN}}</p>
-    </div>
-    <script>
-        var vm = new Vue({
-            el:"#app",
-            data:{
-                cN:[]
-            }
-        })
-    </script> -->
-    <!-- <div id="app">
-        <input type="radio" v-model="pick" value="One">
-        <label for="one">One</label>
-        <br>
-        <input type="radio" value="Two" v-model="pick">
-        <label for="two">Two</label>
-        <p>Picked: {{pick}}</p>
-    </div>
-    <script>
-        var vm = new Vue({
-            el:"#app",
-            data:{
-              pick:''  
-            }
-        })
-    </script> -->
-    <div id="app">
-        <select name="" id="" v-model="selected">
-            <option disabled value="">Please select</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-        </select>
-        <p>your choice is: {{selected}}</p>
-        <select name="" id="" multiple v-model="selectedArray">
-            <option disabled value="">Please select</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-        </select>
-        <p>your choice is: {{selectedArray}}</p>
-    </div>
-    <script>
-        var vm = new Vue({
-            el:"#app",
-            data:{
-              selected:'',
-              selectedArray:[]
-            }
+            el: '#app',
+            data: {
+                userInfo: {
+                    account: "",
+                    passWord: "",
+                    sex: 'male',
+                    hobby: [],
+                    age: 18,
+                    city: 'beijin',
+                    other: '',
+                    agree: ''
+                }
+            },
+            methods: {
+                demo() {
+                    alert("form has been submited")
+                    console.log(JSON.stringify(this.userInfo))
+                }
+            },
         })
     </script>
 </body>
+
 </html>

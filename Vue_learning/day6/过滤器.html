@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Vue/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.6/dayjs.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <h2>显示格式化后的时间</h2>
+        <h3>time:{{time}}</h3>
+        <h3>{{fmTime}}</h3>
+        <h3>{{getTime()}}</h3>
+        <h3>{{time | timeFormater}}</h3>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                time:'2021772861255'
+            },
+            computed:{
+                fmTime(){
+                    return dayjs(this.time).format('YYYY年MM月DD日HH:mm:ss')
+                }
+            },
+            methods: {
+                getTime(){
+                    return dayjs(this.time).format('YYYY年MM月DD日HH:mm:ss')
+                }
+            },
+            filters:{
+                timeFormater(value){
+                    console.log("hello")
+                    return dayjs(value).format('YYYY年MM月DD日HH:mm:ss')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
